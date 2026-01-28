@@ -23,11 +23,19 @@ class Snake:
 
     def create_snake(self):
         for seg_index in STARTING_POSITIONS:
+            self.add_segment(seg_index)
+
+
+    def add_segment(self, position):
             snake_segment = Turtle(shape="square")
             snake_segment.color("white")
             snake_segment.penup()
-            snake_segment.goto(seg_index)
+            snake_segment.goto(position)
             self.segments.append(snake_segment)
+
+    def extend(self):
+        # add a new segemnt to the snake
+        self.add_segment(self.segments[-1].position())
 
     def move(self):
         # loop through each segement in reverse order
